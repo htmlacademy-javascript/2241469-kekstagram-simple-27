@@ -18,5 +18,15 @@ function checkStringLen(str,maxLen){
   return str.length <= maxLen;
 }
 
-getRandomIntNumber(1,5);
-checkStringLen('',36);
+
+const createWizard = () => ({
+  id: getRandomIntNumber(1,25),
+  url: `photos/${getRandomIntNumber(1,25)}.jpg`,
+  description: 'Описание фотографии',
+  likes: getRandomIntNumber(15,200),
+  comments: getRandomIntNumber(0,200)
+});
+
+const similarWizards = Array.from({length: 25}, createWizard);
+
+console.log(similarWizards);
