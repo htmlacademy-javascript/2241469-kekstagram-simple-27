@@ -1,32 +1,12 @@
-function getRandomIntNumber(startRange, endRange) {
-  if(startRange < 0 || endRange < 0) {
-    return NaN;
-  }
-
-  if(startRange >= endRange) {
-    return NaN;
-  }
-
-  const lower = Math.ceil(startRange);
-  const upper = Math.floor(endRange);
-  const result = Math.random() * (upper - lower + 1) + lower;
-  return Math.floor(result);
-}
-
-
-function checkStringLen(str,maxLen){
-  return str.length <= maxLen;
-}
-
-
-const createWizard = () => ({
-  id: getRandomIntNumber(1,25),
-  url: `photos/${getRandomIntNumber(1,25)}.jpg`,
-  description: 'Описание фотографии',
-  likes: getRandomIntNumber(15,200),
-  comments: getRandomIntNumber(0,200)
-});
-
-const similarWizards = Array.from({length: 25}, createWizard);
-
-console.log(similarWizards);
+//data.js для работы с данными
+import './data.js';
+//util.js утилиты и раздел Дополнительные задания
+import './util.js';
+// upload-image.js раздел Загрузка нового изображения на сайт и заполнение информации о нём
+import './upload-image.js';
+//edit-image.js раздед Редактирование изображения и ограничения, накладываемые на поля
+import './edit-image.js';
+//send-data-to-server.js раздел Отправка данных на сервер
+import './send-data-to-server.js';
+//view-image.js раздел Просмотр загруженных изображений
+import './view-image.js';
