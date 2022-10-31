@@ -6,7 +6,9 @@ import './view-image.js';
 import './util.js';
 // upload-image.js раздел Загрузка нового изображения на сайт и заполнение информации о нём
 import './upload-image.js';
-//edit-image.js раздед Редактирование изображения и ограничения, накладываемые на поля
+//edit-image.js раздел Редактирование изображения и ограничения, накладываемые на поля
 import './edit-image.js';
 //send-data-to-server.js раздел Отправка данных на сервер
 import './send-data-to-server.js';
+//work-with-form.js модуль для работы с формой
+import './work-with-form.js';
