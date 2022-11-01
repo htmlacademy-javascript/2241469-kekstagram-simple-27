@@ -1,5 +1,5 @@
 import {getRandomIntNumber} from './util.js';
-function createWizard() {
+function createData() {
 
   return {
     id: getRandomIntNumber(1,25),
@@ -12,5 +12,5 @@ function createWizard() {
 
 }
 
-const similarWizards = Array.from({length: 25}, createWizard);
-export {similarWizards};
+
+export {createData};
