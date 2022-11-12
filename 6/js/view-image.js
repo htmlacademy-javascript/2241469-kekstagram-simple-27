@@ -1,7 +1,7 @@
-import {similarWizards} from './data.js';
+import {createData} from './data.js';
 const imageTemplate = document.querySelector('#picture').content.querySelector('.picture');
 const container = document.querySelector('.pictures');
-
+const similarWizards = Array.from({length: 25}, createData);
 
 function createPicture(data) {
   const {comment, description, likes, url} = data;
@@ -14,19 +14,15 @@ function createPicture(data) {
 
   return picture;
 }
-
-
 function renderPictures(pictures){
 
   const fragment = document.createDocumentFragment();
-
   for(let i = 0;i < pictures.length;i++)
   {
     const pictElement = createPicture(pictures[i]);
     fragment.append(pictElement);
   }
-
   container.append(fragment);
-
 }
+
 renderPictures(similarWizards);
