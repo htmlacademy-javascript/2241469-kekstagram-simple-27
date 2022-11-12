@@ -1,7 +1,6 @@
-import {createData} from './data.js';
 const imageTemplate = document.querySelector('#picture').content.querySelector('.picture');
 const container = document.querySelector('.pictures');
-const similarWizards = Array.from({length: 25}, createData);
+
 
 function createPicture(data) {
   const {comment, description, likes, url} = data;
@@ -25,4 +24,6 @@ function renderPictures(pictures){
   container.append(fragment);
 }
 
-renderPictures(similarWizards);
+export {renderPictures};
+
+
