@@ -8,9 +8,5 @@ function createData() {
     likes: getRandomIntNumber(15,200),
     comments: getRandomIntNumber(0,200)
   };
-
-
 }
-
-
 export {createData};
