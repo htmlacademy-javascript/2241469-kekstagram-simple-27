@@ -1,4 +1,3 @@
-import {similarWizards} from './data.js';
 const imageTemplate = document.querySelector('#picture').content.querySelector('.picture');
 const container = document.querySelector('.pictures');
 
@@ -14,19 +13,17 @@ function createPicture(data) {
 
   return picture;
 }
-
-
 function renderPictures(pictures){
 
   const fragment = document.createDocumentFragment();
-
   for(let i = 0;i < pictures.length;i++)
   {
     const pictElement = createPicture(pictures[i]);
     fragment.append(pictElement);
   }
-
   container.append(fragment);
-
 }
-renderPictures(similarWizards);
+
+export {renderPictures};
+
+
