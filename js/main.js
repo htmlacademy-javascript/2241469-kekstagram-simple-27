@@ -7,4 +7,3 @@ import './work-with-form.js';
 const prepareData = Array.from({length: 25}, createData);
 //ренедерим картинки
 renderPictures(prepareData);
-
