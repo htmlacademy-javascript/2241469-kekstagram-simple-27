@@ -53,6 +53,9 @@ function onFormSubmit(evt) {
 
 }
 
-uploadFile.addEventListener('change',onFileInputChange);
-uploadCancel.addEventListener('click', onCancelButtonClick);
-imgUploadForm.addEventListener('submit', onFormSubmit);
+function addEventsForForm(){
+  uploadFile.addEventListener('change',onFileInputChange);
+  uploadCancel.addEventListener('click', onCancelButtonClick);
+  imgUploadForm.addEventListener('submit', onFormSubmit);
+}
+export {addEventsForForm};
