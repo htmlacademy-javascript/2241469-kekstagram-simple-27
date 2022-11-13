@@ -29,9 +29,9 @@ function isTextFieldFocused() {
   return document.activeElement === textdescription;
 }
 
-
 function onEscKeyDown(evt) {
-  if(evt.key === 'Escape' && !isTextFieldFocused){
+  const checkFocucDescInput = isTextFieldFocused();
+  if(evt.key === 'Escape' && !checkFocucDescInput){
     evt.preventDefault();
     hideModal();
   }
