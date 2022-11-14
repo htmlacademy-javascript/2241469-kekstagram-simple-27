@@ -58,4 +58,5 @@ function addEventsForForm(){
   uploadCancel.addEventListener('click', onCancelButtonClick);
   imgUploadForm.addEventListener('submit', onFormSubmit);
 }
+
 export {addEventsForForm};

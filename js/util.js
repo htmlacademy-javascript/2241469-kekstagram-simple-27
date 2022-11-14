@@ -13,9 +13,18 @@ function getRandomIntNumber(startRange, endRange) {
   return Math.floor(result);
 }
 
+function checkLimited(currentValue, min, max) {
+  if (currentValue < min) {
+    currentValue = min;
+  }
+  if (currentValue > max) {
+    currentValue = max;
+  }
+  return currentValue;
+}
 
 function checkStringLen(str,maxLen){
   return str.length <= maxLen;
 }
 
-export {getRandomIntNumber,checkStringLen};
+export {getRandomIntNumber,checkStringLen,checkLimited};
