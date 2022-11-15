@@ -15,10 +15,10 @@ function getRandomIntNumber(startRange, endRange) {
 
 function checkLimited(currentValue, min, max) {
   if (currentValue < min) {
-    currentValue = min;
+    return min;
   }
   if (currentValue > max) {
-    currentValue = max;
+    return max;
   }
   return currentValue;
 }
