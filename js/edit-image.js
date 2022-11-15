@@ -2,7 +2,6 @@ import {checkLimited} from './util.js';
 const scaleControlValue = document.querySelector('.scale__control--value');
 const scaleControlBigger = document.querySelector('.scale__control--bigger');
 const scaleControlSmaller = document.querySelector('.scale__control--smaller');
-const previewImgElement = document.querySelector('.img-upload__preview img');
 const imageElement = document.querySelector('.img-upload__preview').querySelector('img');
 const effectRadios = document.querySelectorAll('.effects__radio');
 
@@ -16,10 +15,13 @@ sliderContainer.classList.add('hidden');
 effectLevelValue.value = 100;
 
 //Контстанты
-const SCALE_STEP = 25;
-const SCALE_MIN = 25;
-const SCALE_MAX = 100;
-const SCALE_DEFAULT = 100;
+const Scale = {
+  MIN: 25,
+  MAX: 100,
+  STEP: 25,
+  DEFAULT: 100
+};
+
 
 //Текущее значение scale
 function getCurrentScale() {
@@ -28,24 +30,24 @@ function getCurrentScale() {
 
 //устанавливаем значение
 function setPreviewScale(scale) {
-  scale = checkLimited(scale, SCALE_MIN, SCALE_MAX);
+  scale = checkLimited(scale, Scale.MIN, Scale.MAX);
   scaleControlValue.value = `${scale}%`;
-  previewImgElement.style.transform = `scale(${scale / 100})`;
+  imageElement.style.transform = `scale(${scale / 100})`;
 }
 
 function onChangeScaleBiggerClick() {
   const currentScale = getCurrentScale();
-  setPreviewScale(currentScale + SCALE_STEP);
+  setPreviewScale(currentScale + Scale.STEP);
 }
 
 function onChangeScaleSmallerClick() {
   const currentScale = getCurrentScale();
-  setPreviewScale(currentScale - SCALE_STEP);
+  setPreviewScale(currentScale - Scale.STEP);
 }
 
 //сброс
 function resetScaleControlls() {
-  setPreviewScale(SCALE_DEFAULT);
+  setPreviewScale(Scale.DEFAULT);
 }
 
 //навешиваем события на RadioBtn
@@ -67,12 +69,11 @@ const EFFECTS = [
 
 //выбор эффекта на RadioBtn
 function onCheckRadioClick(evt) {
-  imageElement.className = 'none';
-  imageElement.classList.add(`effects__preview--${evt.target.value}`);
   currentEffect = evt.target.value;
 
   if(currentEffect !== 'none'){
     sliderContainer.classList.remove('hidden');
+    imageElement.classList.add(`effects__preview--${evt.target.value}`);
 
     const selectedEffect = EFFECTS.find((effect) => effect.name === currentEffect);
     effectLevelSlider.noUiSlider.updateOptions({
@@ -86,6 +87,8 @@ function onCheckRadioClick(evt) {
   }
   else {
     sliderContainer.classList.add('hidden');
+    imageElement.className = '';
+    imageElement.style = 'none';
   }
 }
 
@@ -125,4 +128,4 @@ function initScaleControlls() {
 }
 
 
-export {initScaleControlls};
+export {initScaleControlls, resetScaleControlls};

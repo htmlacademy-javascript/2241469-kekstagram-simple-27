@@ -1,3 +1,4 @@
+import {resetScaleControlls} from './edit-image.js';
 const body = document.querySelector('body');
 const uploadFile = document.querySelector('#upload-file');
 const uploadCancel = document.querySelector('#upload-cancel');
@@ -16,6 +17,7 @@ function showModal(){
   imgUploadOverlay.classList.remove('hidden');
   body.classList.add('modal-open');
   document.addEventListener('keydown', onEscKeyDown);
+  resetScaleControlls();
 }
 
 function hideModal() {
