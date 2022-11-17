@@ -50,6 +50,13 @@ function resetScaleControlls() {
   setPreviewScale(Scale.DEFAULT);
 }
 
+function resetViewSettings(){
+  imageElement.className = '';
+  imageElement.style = 'none';
+  sliderContainer.classList.add('hidden');
+  effectLevelValue.value = 100;
+}
+
 //навешиваем события на RadioBtn
 function initRadios(){
   effectRadios.forEach((item) => {
@@ -128,4 +135,4 @@ function initScaleControlls() {
 }
 
 
-export {initScaleControlls, resetScaleControlls};
+export {initScaleControlls, resetScaleControlls, resetViewSettings};

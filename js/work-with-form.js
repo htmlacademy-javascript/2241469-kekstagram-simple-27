@@ -47,6 +47,8 @@ function onEscKeyDown(evt) {
 
 function onCancelButtonClick(){
   hideModal();
+  resetScaleControlls();
+  resetViewSettings();
 }
 
 function onFileInputChange () {
