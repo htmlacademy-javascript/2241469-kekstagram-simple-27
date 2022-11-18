@@ -1,16 +1,15 @@
 const ALERT_SHOW_TIME = 5000;
+const DATA_SERVER_URL = 'https://27.javascript.pages.academy/kekstagram-simple/data';
 
 function getDataFromServer( onSuccess ) {
-  fetch('https://27.javascript.pages.academy/kekstagram-simple/data')
+  fetch(DATA_SERVER_URL)
     .then((response) => {
       if (!response.ok) {
         throw new Error(response.statusText);
       }
       return response.json();
     })
-    .then((data) => {
-      onSuccess(data);
-    })
+    .then(onSuccess)
     .catch(() => {
       showAlert('Не удалось получить данные с сервера');
     });
@@ -32,9 +31,7 @@ function sendData (onSuccess, onFailed, body) {
         onFailed();
       }
     })
-    .catch(() => {
-      onFailed();
-    });
+    .catch(onFailed);
 }
 
 

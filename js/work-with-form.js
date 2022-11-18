@@ -18,12 +18,16 @@ const errorMessage = document.querySelector('#error').content.querySelector('.er
 const successButton = successMessage.querySelector('.success__button');
 const errorButton = errorMessage.querySelector('.error__button');
 
+function resetModalView(){
+  resetScaleControlls();
+  resetViewSettings();
+}
+
 function showModal(){
   imgUploadOverlay.classList.remove('hidden');
   body.classList.add('modal-open');
   document.addEventListener('keydown', onEscKeyDown);
-  resetScaleControlls();
-  resetViewSettings();
+  resetModalView();
 }
 
 function hideModal() {
@@ -47,8 +51,7 @@ function onEscKeyDown(evt) {
 
 function onCancelButtonClick(){
   hideModal();
-  resetScaleControlls();
-  resetViewSettings();
+  resetModalView();
 }
 
 function onFileInputChange () {
