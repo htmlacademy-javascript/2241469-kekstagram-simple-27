@@ -1,8 +1,9 @@
 const ALERT_SHOW_TIME = 5000;
-const DATA_SERVER_URL = 'https://27.javascript.pages.academy/kekstagram-simple/data';
+const GET_DATA_SERVER_URL = 'https://27.javascript.pages.academy/kekstagram-simple/data';
+const SEND_DATA_SERVER_URL = 'https://27.javascript.pages.academy/kekstagram-simple/data';
 
 function getDataFromServer( onSuccess ) {
-  fetch(DATA_SERVER_URL)
+  fetch(GET_DATA_SERVER_URL)
     .then((response) => {
       if (!response.ok) {
         throw new Error(response.statusText);
@@ -17,8 +18,7 @@ function getDataFromServer( onSuccess ) {
 
 
 function sendData (onSuccess, onFailed, body) {
-  fetch(
-    'https://27.javascript.pages.academy/kekstagram-simple',
+  fetch(SEND_DATA_SERVER_URL,
     {
       method: 'POST',
       body:body,
