@@ -2,6 +2,7 @@ const ALERT_SHOW_TIME = 5000;
 const GET_DATA_SERVER_URL = 'https://27.javascript.pages.academy/kekstagram-simple/data';
 const SEND_DATA_SERVER_URL = 'https://27.javascript.pages.academy/kekstagram-simple/data';
 
+//получаем данные
 function getDataFromServer( onSuccess ) {
   fetch(GET_DATA_SERVER_URL)
     .then((response) => {
@@ -16,7 +17,7 @@ function getDataFromServer( onSuccess ) {
     });
 }
 
-
+//отправляем данные
 function sendData (onSuccess, onFailed, body) {
   fetch(SEND_DATA_SERVER_URL,
     {
@@ -34,7 +35,7 @@ function sendData (onSuccess, onFailed, body) {
     .catch(onFailed);
 }
 
-
+//показываем алерт
 function showAlert (message) {
   const alertContainer = document.createElement('div');
   alertContainer.style.zIndex = '100';

@@ -7,6 +7,8 @@ const textdescription = document.querySelector('.text__description');
 const imgUploadOverlay = document.querySelector('.img-upload__overlay');
 const imgUploadForm = document.querySelector('.img-upload__form');
 const btnUploadForm = document.querySelector('.img-upload__submit');
+
+
 const pristine = new Pristine(imgUploadForm, {
   classTo: 'img-upload__text',
   errorTextParent: 'img-upload__text',
@@ -18,11 +20,13 @@ const errorMessage = document.querySelector('#error').content.querySelector('.er
 const successButton = successMessage.querySelector('.success__button');
 const errorButton = errorMessage.querySelector('.error__button');
 
+//сброс
 function resetModalView(){
   resetScaleControlls();
   resetViewSettings();
 }
 
+//показать форму
 function showModal(){
   imgUploadOverlay.classList.remove('hidden');
   body.classList.add('modal-open');
@@ -30,6 +34,7 @@ function showModal(){
   resetModalView();
 }
 
+//скрыть форму
 function hideModal() {
   imgUploadForm.reset();
   imgUploadOverlay.classList.add('hidden');
@@ -37,10 +42,12 @@ function hideModal() {
   document.removeEventListener('keydown', onEscKeyDown);
 }
 
+//проверка на фокус
 function isTextFieldFocused() {
   return document.activeElement === textdescription;
 }
 
+//нажатие ESC
 function onEscKeyDown(evt) {
   const checkFocucDescInput = isTextFieldFocused();
   if(evt.key === 'Escape' && !checkFocucDescInput){
@@ -58,17 +65,19 @@ function onFileInputChange () {
   showModal();
 }
 
+//блокируем кнопку
 function blockSubmitButton () {
   btnUploadForm.disabled = true;
   btnUploadForm.textContent = 'Публикую...';
 }
 
+//разблокируем кнопку
 function unblockSubmitButton () {
   btnUploadForm.disabled = false;
   btnUploadForm.textContent = 'Опубликовать';
 }
 
-
+//submit
 function setModalFormSubmit () {
   imgUploadForm.addEventListener('submit', (evt) => {
     evt.preventDefault();
@@ -106,12 +115,14 @@ const onMessageCloseClick = (evt) => {
   }
 };
 
+//закрываем
 function closeMessage() {
   activeMessage.remove();
   document.removeEventListener('keydown', onMessageCloseKeydown, true);
   document.removeEventListener('click',onMessageCloseClick);
 }
 
+//показ сообщения
 function showMessage(message, button) {
   activeMessage = message;
   document.body.append(message);
@@ -120,6 +131,7 @@ function showMessage(message, button) {
   document.addEventListener('click', onMessageCloseClick);
 }
 
+//инициируем
 function addEventsForForm(){
   uploadFile.addEventListener('change',onFileInputChange);
   uploadCancel.addEventListener('click', onCancelButtonClick);
