@@ -121,7 +121,7 @@ function onSliderUpdate () {
   imageElement.style.filter = selectedEffect.setEffect(SLIDER_VALUE);
 }
 
-//инициируем 
+//инициируем
 function initScaleControlls() {
   //сброс
   resetScaleControlls();
