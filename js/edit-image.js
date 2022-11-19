@@ -50,6 +50,7 @@ function resetScaleControlls() {
   setPreviewScale(Scale.DEFAULT);
 }
 
+//сброс
 function resetViewSettings(){
   imageElement.className = '';
   imageElement.style = 'none';
@@ -120,7 +121,7 @@ function onSliderUpdate () {
   imageElement.style.filter = selectedEffect.setEffect(SLIDER_VALUE);
 }
 
-
+//инициируем
 function initScaleControlls() {
   //сброс
   resetScaleControlls();

@@ -13,6 +13,7 @@ function getRandomIntNumber(startRange, endRange) {
   return Math.floor(result);
 }
 
+//проверка ограничения
 function checkLimited(currentValue, min, max) {
   if (currentValue < min) {
     return min;
