@@ -1,6 +1,6 @@
 const ALERT_SHOW_TIME = 5000;
 const GET_DATA_SERVER_URL = 'https://27.javascript.pages.academy/kekstagram-simple/data';
-const SEND_DATA_SERVER_URL = 'https://27.javascript.pages.academy/kekstagram-simple/data';
+const SEND_DATA_SERVER_URL = 'https://27.javascript.pages.academy/kekstagram-simple';
 
 //получаем данные
 function getDataFromServer( onSuccess ) {
@@ -47,11 +47,8 @@ function showAlert (message) {
   alertContainer.style.fontSize = '30px';
   alertContainer.style.textAlign = 'center';
   alertContainer.style.backgroundColor = 'red';
-
   alertContainer.textContent = message;
-
   document.body.append(alertContainer);
-
   setTimeout(() => {
     alertContainer.remove();
   }, ALERT_SHOW_TIME);

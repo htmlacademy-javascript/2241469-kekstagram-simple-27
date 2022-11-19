@@ -4,7 +4,6 @@ const scaleControlBigger = document.querySelector('.scale__control--bigger');
 const scaleControlSmaller = document.querySelector('.scale__control--smaller');
 const imageElement = document.querySelector('.img-upload__preview').querySelector('img');
 const effectRadios = document.querySelectorAll('.effects__radio');
-
 const sliderContainer = document.querySelector('.img-upload__effect-level');
 const effectLevelSlider = document.querySelector('.effect-level__slider');
 const effectLevelValue = document.querySelector('.effect-level__value');
@@ -21,7 +20,6 @@ const Scale = {
   STEP: 25,
   DEFAULT: 100
 };
-
 
 //Текущее значение scale
 function getCurrentScale() {
@@ -66,7 +64,7 @@ function initRadios(){
 }
 
 //набор значений для обновления слайдера по эффектам
-const EFFECTS = [
+const setOfEffests = [
   {name: 'none', setEffect: () => ''},
   {name: 'chrome', minValue: 0, maxValue: 1, step: 0.1, setEffect: (value) => `grayscale(${value})`},
   {name: 'sepia', minValue: 0, maxValue: 1, step: 0.1, setEffect: (value) => `sepia(${value})`},
@@ -78,12 +76,10 @@ const EFFECTS = [
 //выбор эффекта на RadioBtn
 function onCheckRadioClick(evt) {
   currentEffect = evt.target.value;
-
   if(currentEffect !== 'none'){
     sliderContainer.classList.remove('hidden');
     imageElement.classList.add(`effects__preview--${evt.target.value}`);
-
-    const selectedEffect = EFFECTS.find((effect) => effect.name === currentEffect);
+    const selectedEffect = setOfEffests.find((effect) => effect.name === currentEffect);
     effectLevelSlider.noUiSlider.updateOptions({
       range: {
         min: selectedEffect.minValue,
@@ -117,7 +113,7 @@ function createSlider() {
 function onSliderUpdate () {
   const SLIDER_VALUE = effectLevelSlider.noUiSlider.get();
   effectLevelValue.value = SLIDER_VALUE;
-  const selectedEffect = EFFECTS.find((effect) => effect.name === currentEffect);
+  const selectedEffect = setOfEffests.find((effect) => effect.name === currentEffect);
   imageElement.style.filter = selectedEffect.setEffect(SLIDER_VALUE);
 }
 
@@ -128,12 +124,10 @@ function initScaleControlls() {
   //подписываем на события
   scaleControlBigger.addEventListener('click', onChangeScaleBiggerClick);
   scaleControlSmaller.addEventListener('click', onChangeScaleSmallerClick);
-
   //инициируем radioBtn
   initRadios();
   //создаем слайдер
   createSlider();
 }
-
 
 export {initScaleControlls, resetScaleControlls, resetViewSettings};
