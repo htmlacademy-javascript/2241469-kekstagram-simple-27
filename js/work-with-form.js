@@ -7,8 +7,6 @@ const textdescription = document.querySelector('.text__description');
 const imgUploadOverlay = document.querySelector('.img-upload__overlay');
 const imgUploadForm = document.querySelector('.img-upload__form');
 const btnUploadForm = document.querySelector('.img-upload__submit');
-
-
 const pristine = new Pristine(imgUploadForm, {
   classTo: 'img-upload__text',
   errorTextParent: 'img-upload__text',
@@ -61,7 +59,7 @@ function onCancelButtonClick(){
   resetModalView();
 }
 
-function onFileInputChange () {
+function onChangeFileInput () {
   showModal();
 }
 
@@ -81,10 +79,8 @@ function unblockSubmitButton () {
 function setModalFormSubmit () {
   imgUploadForm.addEventListener('submit', (evt) => {
     evt.preventDefault();
-
     const isValid = pristine.validate();
     if (isValid) {
-
       blockSubmitButton();
       sendData(
         () => {
@@ -102,14 +98,14 @@ function setModalFormSubmit () {
   });
 }
 
-const onMessageCloseKeydown = (evt) => {
+const onCloseKeydown = (evt) => {
   if(onEscKeyDown(evt)) {
     evt.preventDefault();
     closeMessage();
   }
 };
 
-const onMessageCloseClick = (evt) => {
+const onCloseClick = (evt) => {
   if (evt.target === activeMessage) {
     closeMessage();
   }
@@ -118,8 +114,8 @@ const onMessageCloseClick = (evt) => {
 //закрываем
 function closeMessage() {
   activeMessage.remove();
-  document.removeEventListener('keydown', onMessageCloseKeydown, true);
-  document.removeEventListener('click',onMessageCloseClick);
+  document.removeEventListener('keydown', onCloseKeydown, true);
+  document.removeEventListener('click',onCloseClick);
 }
 
 //показ сообщения
@@ -127,13 +123,13 @@ function showMessage(message, button) {
   activeMessage = message;
   document.body.append(message);
   button.addEventListener('click', closeMessage);
-  document.addEventListener('keydown', onMessageCloseKeydown, true);
-  document.addEventListener('click', onMessageCloseClick);
+  document.addEventListener('keydown', onCloseKeydown, true);
+  document.addEventListener('click', onCloseClick);
 }
 
 //инициируем
 function addEventsForForm(){
-  uploadFile.addEventListener('change',onFileInputChange);
+  uploadFile.addEventListener('change',onChangeFileInput);
   uploadCancel.addEventListener('click', onCancelButtonClick);
   setModalFormSubmit();
 }
